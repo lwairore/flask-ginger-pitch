@@ -2,6 +2,7 @@ from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from . import login_manager
+from datetime import datetime
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -26,3 +27,11 @@ class User(UserMixin,db.Model):
 
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+class Pitch(db.Model):
+    __tablename__ = 'reviews'
+    id = db.Column(db.Integer, primary_ky=True)
+    pitch_title = db.Column(db.String)
+    pitch_body = db.Column(db.String)
+    postedAt = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
