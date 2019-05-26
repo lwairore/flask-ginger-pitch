@@ -16,6 +16,7 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(255), unique=True, index=True)
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
+    pitch = db.relationship('Pitch', backref="user", lazy="dynamic")
 
     @property
     def password(self):
@@ -29,9 +30,9 @@ class User(UserMixin,db.Model):
         return check_password_hash(self.password_hash, password)
 
 class Pitch(db.Model):
-    __tablename__ = 'reviews'
+    __tablename__ = 'pitch_table'
     id = db.Column(db.Integer, primary_ky=True)
     pitch_title = db.Column(db.String)
     pitch_body = db.Column(db.String)
-    postedAt = db.Column(db.DateTime, default=datetime.utcnow)
+    posted_at = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
