@@ -2,6 +2,8 @@ from . import main
 from flask import render_template, request, redirect, url_for, abort
 from flask_login import login_required
 from ..models import Reviews, User
+from .forms import UpdateProfile
+from .. import db
 
 @main.route('/')
 def index():
