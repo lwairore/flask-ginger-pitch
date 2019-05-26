@@ -1,7 +1,7 @@
 from . import main
 from flask import render_template, request, redirect, url_for, abort
 from flask_login import login_required
-from ..models import Reviews, User
+from ..models import User
 from .forms import UpdateProfile
 from .. import db
 
@@ -41,5 +41,5 @@ def update_profile(uname):
         return redirect(url_for('.profile', uname=user.username))
 
     return render_template('profile/update.html', form=form)
-    
+
     
