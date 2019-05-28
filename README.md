@@ -112,7 +112,7 @@ Email - (https://kwairore@gmail.com)
 Github username - lwairore
 
 
-## GIKO Management Team 
+## GINGER Management Team 
 ### Karangu Lucas Wairore 
 ####    Junior Developer
 
