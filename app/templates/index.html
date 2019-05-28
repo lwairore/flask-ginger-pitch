@@ -1,36 +1,112 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="list-group">
-        <a href="#" class="list-group-item active">Elevator Pitch</a>
-        <a href="#!" class="list-group-item">"Hi, my name is Sara. It’s so nice to meet you! I’m a PR manager, specializing in overseeing successful initiative launches from beginning to end. Along with my seven years of professional experience, I recently received my MBA with a focus on consumer trust and retention. I find the work your PR team does to be innovating and refreshing—I’d love the opportunity to put my expertise to work for your company…"</a>
-        <a href="#!" class="list-group-item">"Hi, my name is Jane. It’s so nice to meet you! I’m a PR manager, specializing in overseeing successful initiative launches from beginning to end. Along with my 7 years of professional experience, I recently received my MBA with a focus on consumer trust and retention. I find the work your PR team does to be innovating and refreshing—I’d love the opportunity to put my expertise to work for your company. Would you mind if I set up a quick call next week for us to talk about any upcoming opportunities on your team?"</a>
-        <a href="#!" class="list-group-item"><i>Job Title: Graphic Designer</i><br>"Hi, I’m Molly, so nice to meet you! I’m a Graphic Designer at ABC Inc., where I’m passionate about creating beautiful, intuitive designs for a variety of marketing collateral for our top-tier clients. Before that, I got my Masters in Graphic Design. I’m looking for experiences to learn more about career paths and ways to grow into assuming an Art Director role in the next few years. Your work with XYZ brand has inspired the ways I think about design—I would love to talk more about a potential mentorship with you if that’s something you have time for and would be interested in"</a>
+
+    
+
+
+    <div class="container">
+         
+        
+        <div class="list-group">
+            <a href="#" class="list-group-item active">Elevator Pitch</a>
+            {{format_review|safe}}
+            {% for pitch in pitches %}
+            {% if pitch.category=="Elevator" %}
+            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}
+                {% if pitch.posted_by == None %}
+                <p></p><b>~~Anonymous</b></a>
+                {% else %}
+                <p></p><b>~~{{pitch.posted_by|safe}}</b><a></a>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+        </div>
+        <p></p>
+        <hr>
+        <p></p>
+        
+        <div class="list-group">
+            <a href="#!" class="list-group-item active">Interview Pitch</a>
+            {% for pitch in pitches %}
+            {% if pitch.category=="Interview" %}
+            
+            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}
+                {% if pitch.posted_by == None %}
+                <p></p><b>~~Anonymous</b></a>
+                {% else %}
+                <p></p><b>~~{{pitch.posted_by}}</b><a></a>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+        </div>
+        <p></p>
+        <hr>
+        <p></p>
+        
+        <div class="list-group">
+            <a href="#!" class="list-group-item active">Adding a contact</a>
+            {% for pitch in pitches %}
+            {% if pitch.category=="Adding a Contact" %}
+            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title}}</i><p></p>{{pitch.pitch_body}}<p></p>{{pitch.posted_at}}{% if pitch.posted_by == None %}
+                <p></p><b>~~Anonymous</b></a>
+                {% else %}
+                <p></p><b>~~{{pitch.posted_by}}</b><a></a>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+        </div>
+        <p></p>
+        <hr>
+        <p></p>
+        
+        <div class="list-group">
+            <a href="#!" class="list-group-item active">Seeking a job opportunity</a>
+            {% for pitch in pitches %}
+            {% if pitch.category=="Job Opportunity" %}
+
+            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}{% if pitch.posted_by == None %}
+                <p></p><b>~~Anonymous</b></a>
+                {% else %}
+                <p></p><b>~~{{pitch.posted_by}}</b><a></a>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+        </div>
+        <p></p>
+        <hr>
+        <p></p>
+          
+        <div class="list-group">
+            <a href="#!" class="list-group-item active">Product pitch</a>
+            {% for pitch in pitches %}
+            {% if pitch.category=="Product Pitch" %}                      
+            </a>
+            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}
+                {% if pitch.posted_by == None %}
+                <p></p><b>~~Anonymous</b></a>
+                {% else %}
+                <p></p><b>~~{{pitch.posted_by}}</b><a></a>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+        </div>
+        
+        <div class="list-group">
+            <a href="#!" class="list-group-item active">Promotional Pitch</a>
+            {% for pitch in pitches %}
+            {% if pitch.category=="Promotional Pitch" %}
+            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title}}</i><p></p>{{pitch.pitch_body}}<p></p>{{pitch.posted_at}}
+                {% if pitch.posted_by == None %}
+                <p></p><b>~~Anonymous</b></a>
+                {% else %}
+                <p></p><b>~~{{pitch.posted_by}}</b><a></a>
+                {% endif %}
+            
+            {% endif %}
+            {% endfor %}
+        </div>
         
     </div>
-    <p></p>
-    <hr>
-    <p></p>
-    <div class="list-group">
-        <a href="#!" class="list-group-item active">Interview Pitch</a>
-        <a href="#!" class="list-group-item"><i>Job Title: Executive Assistant</i><br>Hi, my name is Mark. Thanks so much for sitting down with me today. After graduating with my Bachelor’s degree in Business Administration, I’ve spent the last three years building professional experience as an Executive Assistant. I’ve successfully managed end-to-end event coordination and have generated a strong professional network for my colleagues. I was excited to learn about this opportunity in the sports management space—I’ve always been passionate about the way sports brings cultures together, and would love the opportunity to bring my project management and leadership abilities to this position.</a>
 
-    </div>
-    <p></p>
-    <hr>
-    <p></p>
-    <div class="list-group">
-        <a href="#!" class="list-group-item active">Adding a contact</a>
-        <a href="#!" class="list-group-item"><i>Job Title: Business Analyst</i><br>Hello! My name is Anwar, it’s a pleasure to meet you. I have a background in Business Analytics with just over 10 years experience creating data-driven solutions for various business problems. Specifically, I love and have had great success in the strategic evaluation of data analysis with our executive staff. It sounds like you do similar work—I would love to keep in touch to learn more about what you and your company do.</a>
-    </div>
-    <p></p>
-    <hr>
-    <p></p>
-    <div class="list-group">
-        <a href="#!" class="list-group-item active">Seeking a job opportunity</a>
-        <a href="#!" class="list-group-item"><i>Job Title: Media Planner</i><br>Hi, I’m Tom. I’ve spent the last eight years learning and growing in my role as Media Planner, where I’ve developed and optimized strategic media plans for our top client and managed a subset of planners as a Team Lead. One of my proudest achievements was a pro-bono project that was recognized as a top non-profit campaign last year. I’ve been interested in moving to non-profit for quite a while, and love what your company does in education. Would you mind telling me about any media planning needs you may have on the team?</a>
-    </div>
-    <p></p>
-    <hr>
-    <p></p>
 {% endblock %}

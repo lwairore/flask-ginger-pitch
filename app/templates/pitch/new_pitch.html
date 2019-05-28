@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content%}
+    <div class="container">
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1>Quick Guidelines </h1>
+            </div>
+            <p>Introducing yourself well sets the stage for a professional conversation, whether that’s at a networking event, with a colleague or at the beginning of an interview. One tool many people use to make introductions simple and effective is the elevator pitch. </p>
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">The Perfect Pitch</div>
+                <div class="panel-body">Condensing 50+ years of of your life accomplishments into a 30-second statement that packs a punch can feel as challenging as trying to stuff an elephant into a Volkswagen Beetle. I get that. So to help you develop a knockout pitch, I've broken the process into nine steps:<p></p>
+                    1. <strong>Clarify your job target</strong>. As Yogi Berra famously said, “You’ve got to be very careful if you don’t know where you’re going, because you might not get there.” <p>So when you begin putting a pitch together, nail down the best way to describe your field and the type of job you’re pursuing. Until you can clearly explain the type of position you want, nobody can help you find it or hire you to do it.</p>
+                    <p></p>
+                    2. <strong>Put it on paper</strong>.  Write down everything you’d want a prospective employer to know about your skills, accomplishments and work experiences that are relevant to your target position. Then grab a red pen and mercilessly delete everything that’s not critical to your pitch. <p>Keep editing until you’ve got the speech down to a few key bullet points or sentences. Your goal is to interest the listener in learning more, not to tell your whole life story. So remove extraneous details that detract from your core message.</p>
+                    <p></p>
+                    3. <strong>Format it.</strong> A good pitch should answer three questions: Who are you? What do you do? What are you looking for?
+                    <p></p>
+                    4. <strong>Tailor to pitch <i>them</i>, not you.</strong>It’s important to remember that the people listening to your speech will have their antennas tuned to WIFM (What’s in It for Me?) So be sure to focus your message on their needs.
+                    <p></p>
+                    5. <strong>Eliminate industry jargon</strong> You need to make your pitch easy for anyone to understand, so avoid using acronyms and tech-speak that the average person or job interviewer might not understand. <p>The last thing you want to do is make your listener feel stupid or uninformed.</p>
+                    <p></p>
+                    6. <strong>Read your pitch out loud.</strong> As Fast Company’s Deborah Grayson Riegel recently pointed out in her article "<a href="http://www.fastcompany.com/3004484/problem-your-elevator-pitch-and-how-fix-it">The Problem With Your Elevator Pitch and How to Fix it</a>", writing is more formal and structured than speaking. If you’re not careful, your pitch can come off sounding more like an infomercial than a conversation.<p>Reading it aloud then tinkering with the words will help you sound more authentic.</p>
+                    <p></p>
+                    7. <strong>Practice, practice, practice (then solicit feedback)</strong>Rehearse your pitch in front of a mirror or use the recording capabilities of your computer, so you can see and hear how you sound.<p>This might feel awkward at first, but the more you practice, the smoother your delivery will be.</p> <p>Keep tweaking your pitch until it no longer sounds rehearsed. When your presentation is polished to your satisfaction, try it out on a few friends and ask them what they thought your key points were. If their response doesn’t square with your objective, the speech still needs work.</p>
+                    <p></p>
+                    8. <b>Prepare a few variations.</b>You might want to say things slightly differently to an interviewer than to a former colleague. Also, sometimes you'll just have 15 seconds for a pitch (kind of a short elevator ride), other times you may have a minute or two. <p>So focus on mastering a few key talking points then work up ways to customize your speech for particular situations.</p>Use the word count feature on your computer to create shorter and longer pitches; a good rule of thumb is that you can say about 150 words in one minute.<p></p>
+                    <p></p>
+                    9. <b>Nail it with confidence.</b> The best-worded pitch in the world will fall flat unless it’s conveyed well.<p>When you give the speech, look the person in the eye, smile and deliver your message with a confident, upbeat delivery.</p> 
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            {{ wtf.quick_form(pitch_form)}}
+            {{simplemde.load}}
+        </div>
+    </div>
+{% endblock %}

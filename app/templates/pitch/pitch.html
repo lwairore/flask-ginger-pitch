@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+{% block content%}
+    <div class="container">
+        <div class="row">
+        
+        <div class="list-group">
+                <a href="#!" class="list-group-item active">Adding a contact</a>
+
+                <a href="{{url_for('main.new_comment',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}</a>
+
+            </div>
+        
+    </div>
+        <h1 class="text-center">COMMENTS</h1>
+        <hr>
+        <h3><a href="{{url_for('main.new_comment',id=pitch.id)}}">What do you think?</a></h3>
+        
+        
+        {% for item in comment %}
+
+        <dl>
+                <dt>{{item.title|safe}}</dt>
+                <dd>{{item.comment|safe}}</dd>
+                <dd>{% if item.posted_by == None %}
+                    ~~Anonymous
+                    {% else %}
+                    ~~{{item.posted_by}}
+                    {% endif %}
+            </dl>
+
+        {% endfor %}
+
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+
+            <div class="list-group">
+                <a class="list-group-item active">{{pitch.category}}</a>
+                
+                <i>{{pitch.pitch_title|safe}}</i>
+                <p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}
+                {% if pitch.posted_by == None %}
+                <p></p><b>~~Anonymous</b></a>
+                {% else %}
+                <p></p><b>~~{{pitch.posted_by|safe}}</b><a></a>
+                {% endif %}
+           
+            </div>
+
+        </div>
+        <div class="col-md-5">
+            {{wtf.quick_form(form)}}
+            {{simplemde.load}}
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+</div>
+<p></p>
+{% endblock %}
