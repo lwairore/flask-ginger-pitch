@@ -48,7 +48,7 @@
             <a href="#!" class="list-group-item active">Adding a contact</a>
             {% for pitch in pitches %}
             {% if pitch.category=="Adding a Contact" %}
-            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title}}</i><p></p>{{pitch.pitch_body}}<p></p>{{pitch.posted_at}}{% if pitch.posted_by == None %}
+            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}{% if pitch.posted_by == None %}
                 <p></p><b>~~Anonymous</b></a>
                 {% else %}
                 <p></p><b>~~{{pitch.posted_by}}</b><a></a>
