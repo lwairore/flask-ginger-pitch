@@ -1,7 +1,7 @@
 import unittest
 from app.models import User
 
-class TestUser(unittest):
+class TestUser(unittest.TestCase):
     def setUp(self):
         self.user_John = User(username='John', password="angel", email="john@gmail.com", id=1, bio="Iam a junior developer", profile_pic_path="app/static/photos")
 
