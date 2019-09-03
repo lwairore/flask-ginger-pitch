@@ -2,111 +2,27 @@
 
 {% block content %}
 
-    
-
-
     <div class="container">
-         
-        
+
+        {% for category in categories %}
         <div class="list-group">
-            <a href="#" class="list-group-item active">Elevator Pitch</a>
-            {{format_review|safe}}
-            {% for pitch in pitches %}
-            {% if pitch.category=="Elevator" %}
-            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}
-                {% if pitch.posted_by == None %}
+                <a href="#!" class="list-group-item active">{{category}}</a>
+                {{format_review|safe}}
+                {% for pitch in pitches %}
+                    {% if pitch.category == category %}
+                    <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}
+                        {% if pitch.posted_by == None %}
                 <p></p><b>~~Anonymous</b></a>
                 {% else %}
                 <p></p><b>~~{{pitch.posted_by|safe}}</b><a></a>
                 {% endif %}
-            {% endif %}
-            {% endfor %}
+                    {% endif %}
+                {% endfor %}
         </div>
-        <p></p>
         <hr>
-        <p></p>
-        
-        <div class="list-group">
-            <a href="#!" class="list-group-item active">Interview Pitch</a>
-            {% for pitch in pitches %}
-            {% if pitch.category=="Interview" %}
-            
-            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}
-                {% if pitch.posted_by == None %}
-                <p></p><b>~~Anonymous</b></a>
-                {% else %}
-                <p></p><b>~~{{pitch.posted_by}}</b><a></a>
-                {% endif %}
-            {% endif %}
-            {% endfor %}
-        </div>
-        <p></p>
-        <hr>
-        <p></p>
-        
-        <div class="list-group">
-            <a href="#!" class="list-group-item active">Adding a contact</a>
-            {% for pitch in pitches %}
-            {% if pitch.category=="Adding a Contact" %}
-            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}{% if pitch.posted_by == None %}
-                <p></p><b>~~Anonymous</b></a>
-                {% else %}
-                <p></p><b>~~{{pitch.posted_by}}</b><a></a>
-                {% endif %}
-            {% endif %}
-            {% endfor %}
-        </div>
-        <p></p>
-        <hr>
-        <p></p>
-        
-        <div class="list-group">
-            <a href="#!" class="list-group-item active">Seeking a job opportunity</a>
-            {% for pitch in pitches %}
-            {% if pitch.category=="Job Opportunity" %}
+        {% endfor %}
 
-            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}{% if pitch.posted_by == None %}
-                <p></p><b>~~Anonymous</b></a>
-                {% else %}
-                <p></p><b>~~{{pitch.posted_by}}</b><a></a>
-                {% endif %}
-            {% endif %}
-            {% endfor %}
-        </div>
-        <p></p>
-        <hr>
-        <p></p>
-          
-        <div class="list-group">
-            <a href="#!" class="list-group-item active">Product pitch</a>
-            {% for pitch in pitches %}
-            {% if pitch.category=="Product Pitch" %}                      
-            </a>
-            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}
-                {% if pitch.posted_by == None %}
-                <p></p><b>~~Anonymous</b></a>
-                {% else %}
-                <p></p><b>~~{{pitch.posted_by}}</b><a></a>
-                {% endif %}
-            {% endif %}
-            {% endfor %}
-        </div>
-        
-        <div class="list-group">
-            <a href="#!" class="list-group-item active">Promotional Pitch</a>
-            {% for pitch in pitches %}
-            {% if pitch.category=="Promotional Pitch" %}
-            <a href="{{url_for('main.pitch',id=pitch.id)}}" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}
-                {% if pitch.posted_by == None %}
-                <p></p><b>~~Anonymous</b></a>
-                {% else %}
-                <p></p><b>~~{{pitch.posted_by}}</b><a></a>
-                {% endif %}
-            
-            {% endif %}
-            {% endfor %}
-        </div>
-        
+ 
     </div>
 
 {% endblock %}
