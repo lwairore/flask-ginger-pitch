@@ -36,15 +36,28 @@
         </div>
         <div class="row">
                 {% if pitches %}
+                <h3 style="text-transform: uppercase">My Pitches</h5>
+                <hr>
                 {% for pitch in pitches %}
                        
-                <div class="list-group">
+                <!-- <div class="list-group">
                         <a href="#!" class="list-group-item active">{{pitch.category}}</a>
                                         
                         <a href="#!" class="list-group-item"><i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}</a>
 
-                    </div>
+                    </div> -->
                 
+                    <div class="panel panel-success">
+                            <div class="panel-heading">{{pitch.category}}</div>
+                            <div class="panel-body">
+                                    <i>{{pitch.pitch_title|safe}}</i><p></p>{{pitch.pitch_body|safe}}<p></p>{{pitch.posted_at}}
+                            </div>
+                            <div class="panel-footer">
+                                <a href="{{url_for('main.delete_pitch', id=pitch.id)}}">
+                                        <i title="Delete pitch." class="glyphicon glyphicon-trash"></i>
+                                </a>
+                                </div>
+                          </div> 
 
             {% endfor %}
             {% else %}
