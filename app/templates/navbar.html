@@ -16,6 +16,7 @@
                 </button>
                 <ul class="nav navbar-nav navbar-right">
                   {% if current_user.is_authenticated %}
+                  <li><a href="/">Home</a></li>
                   <li style="color:white;padding:15px;">{{current_user.username}}</li>
                   <li><a href="{{url_for('main.profile', uname=current_user.username)}}">Profile</a></li>
                   <li><a href="{{url_for('main.new_pitch', uname=current_user.username)}}">Post a Pitch</a></li>
@@ -25,12 +26,12 @@
                   {% endif %}
                 </ul>
                 
-                <a class="navbar-brand" href="/"> Home </a>
+                <a class="navbar-brand" href="/" title="Pitch your idea!"> Ginger-Pitch </a>
             </div>
-            <div class="navbar-collapse collapse">
+            <!-- <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/">Home</a></li>
-            </div>
+            </div> -->
 
         </div>
     </div>
