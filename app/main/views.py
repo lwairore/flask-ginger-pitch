@@ -9,11 +9,18 @@ import markdown2
 @main.route('/')
 def index():
     title = "Pitch | Home"
-    
+    categories = [
+        'Elevator',
+        'Interview',
+        'Adding a Contact',
+        'Job Opportunity',
+        'Product Pitch',
+        'Promotional Pitch',
+        ]
     pitches = Pitch.query.all()
     
    
-    return render_template('index.html', title = title,pitches=pitches )
+    return render_template('index.html', title = title,pitches=pitches, categories=categories )
 
 
 
@@ -69,6 +76,7 @@ def new_pitch():
         pitch_body = markdown2.markdown(pitch_body, extras=["code-friendly", "fenced-code-blocks"] )
         new_pitch = Pitch(pitch_title = pitch_title, pitch_body = pitch_body, user=current_user, category=form.category.data, posted_by=current_user.username)
         new_pitch.save_pitch()
+        
  
     title = "Pitch | New"
     # user_details = User.query.filter_by(username=current_user).first()
@@ -113,4 +121,10 @@ def pitch(id):
     return render_template('pitch/pitch.html', pitch=pitch, comment=comment, commentedBy=commentedBy,comments=comments,posted_by=current_user.username)
 
     
-    
+@main.route('/pitch/delete/<int:id>')
+@login_required
+def delete_pitch(id):
+    pitch = Pitch.query.filter_by(id=id).first()
+    db.session.delete(pitch)
+    db.session.commit()
+    return redirect(url_for('main.profile', uname=current_user.username))
