@@ -1,3 +1,5 @@
 virtual/
 *.pyc
 start.sh
+migrations/
+__pycache__
