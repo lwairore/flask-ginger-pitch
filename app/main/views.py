@@ -44,7 +44,7 @@ def update_profile(uname):
     form = UpdateProfile()
     if form.validate_on_submit():
         user.bio = form.bio.data
-        user.pitch_test = form.pitch.data
+        # user.pitch_test = form.pitch.data
         db.session.add(user)
         db.session.commit()
 
