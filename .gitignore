@@ -1,8 +1,6 @@
 virtual/
 *.pyc
 start.sh
-migrations/
 __pycache__
-migrations/
 *.sh
 **/photos/**
