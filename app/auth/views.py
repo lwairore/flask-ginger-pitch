@@ -26,7 +26,7 @@ def register():
         user = User(email=form.email.data, username=form.username.data,password=form.password.data)
         db.session.add(user)
         db.session.commit()
-        mail_message("Welcome to Ginger-Pitch", "email/welcome_user", user.email, user=user)
+        mail_message("Welcome to Ginger-Pitch", user.email, user=user)
         return redirect(url_for('auth.login'))
     title = 'Pitch | New Account'
     return render_template('/auth/register.html', registration_form=form)
